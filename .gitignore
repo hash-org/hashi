@@ -1,1 +1,9 @@
 /target
+
+/profiles
+
+# stupid vscode config files
+.vscode/
+
+# stupid JetBrains config files
+.idea/
