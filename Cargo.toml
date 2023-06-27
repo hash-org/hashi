@@ -9,12 +9,12 @@ edition = "2021"
 rustyline = "8.0.0"
 rayon = "1.5.0"
 
-hash-ast = { git = "https://github.com/hash-org/hashc.git" }
-hash-pipeline = { git = "https://github.com/hash-org/hashc.git" }
-hash-reporting = { git = "https://github.com/hash-org/hashc.git" }
-hash-session = { git = "https://github.com/hash-org/hashc.git" }
-hash-source = { git = "https://github.com/hash-org/hashc.git" }
-hash-utils = { git = "https://github.com/hash-org/hashc.git" }
+hash-ast = { git = "https://github.com/hash-org/hashc.git", branch = "main" }
+hash-pipeline = { git = "https://github.com/hash-org/hashc.git", branch = "main" }
+hash-reporting = { git = "https://github.com/hash-org/hashc.git", branch = "main" }
+hash-driver = { git = "https://github.com/hash-org/hashc.git", branch = "main" }
+hash-source = { git = "https://github.com/hash-org/hashc.git", branch = "main" }
+hash-utils = { git = "https://github.com/hash-org/hashc.git", branch = "main" }
 
 [dev-dependencies.cargo-husky]
 version = "1.5"

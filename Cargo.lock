@@ -3,6 +3,21 @@
 version = 3
 
 [[package]]
+name = "addr2line"
+version = "0.19.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "a76fd60b23679b7d19bd066031410fb7e458ccc5e958eb5c325888ce4baedc97"
+dependencies = [
+ "gimli",
+]
+
+[[package]]
+name = "adler"
+version = "1.0.2"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "f26201604c87b1e01bd3d98f8d5d9a8fcbb815e8cedb41ffccbeb4bf593a35fe"
+
+[[package]]
 name = "ahash"
 version = "0.7.6"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -90,6 +105,21 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "d468802bab17cbc0cc575e9b053f41e72aa36bfa6b7f55e3529ffa43161b97fa"
 
 [[package]]
+name = "backtrace"
+version = "0.3.67"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "233d376d6d185f2a3093e58f283f60f880315b6c60075b01f36b3b85154564ca"
+dependencies = [
+ "addr2line",
+ "cc",
+ "cfg-if",
+ "libc",
+ "miniz_oxide",
+ "object",
+ "rustc-demangle",
+]
+
+[[package]]
 name = "bimap"
 version = "0.6.3"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -103,9 +133,9 @@ checksum = "cf1de2fe8c75bc145a2f577add951f8134889b4795d47466a54a5c846d691693"
 
 [[package]]
 name = "bitflags"
-version = "2.3.2"
+version = "2.3.3"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "6dbe3c979c178231552ecba20214a8272df4e09f232a87aef4320cf06539aded"
+checksum = "630be753d4e58660abd17930c71b647fe46c27ea6b63cc59e1e3851406972e42"
 
 [[package]]
 name = "bumpalo"
@@ -419,11 +449,17 @@ dependencies = [
 ]
 
 [[package]]
+name = "gimli"
+version = "0.27.3"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "b6c80984affa11d98d1b88b66ac8853f143217b399d3c74116778ff8fdb4ed2e"
+
+[[package]]
 name = "hash-abi"
 version = "0.1.0"
-source = "git+https://github.com/hash-org/hashc.git#49f2900a000062d3964c44a7b46d7999f24687eb"
+source = "git+https://github.com/hash-org/hashc.git?branch=main#8661310406502a13577974a2ea5d6fcbe0763121"
 dependencies = [
- "bitflags 2.3.2",
+ "bitflags 2.3.3",
  "hash-ir",
  "hash-layout",
  "hash-source",
@@ -434,7 +470,7 @@ dependencies = [
 [[package]]
 name = "hash-alloc"
 version = "0.1.0"
-source = "git+https://github.com/hash-org/hashc.git#49f2900a000062d3964c44a7b46d7999f24687eb"
+source = "git+https://github.com/hash-org/hashc.git?branch=main#8661310406502a13577974a2ea5d6fcbe0763121"
 dependencies = [
  "bumpalo",
  "bumpalo-herd",
@@ -443,7 +479,7 @@ dependencies = [
 [[package]]
 name = "hash-ast"
 version = "0.1.0"
-source = "git+https://github.com/hash-org/hashc.git#49f2900a000062d3964c44a7b46d7999f24687eb"
+source = "git+https://github.com/hash-org/hashc.git?branch=main#8661310406502a13577974a2ea5d6fcbe0763121"
 dependencies = [
  "hash-source",
  "hash-tree-def",
@@ -455,7 +491,7 @@ dependencies = [
 [[package]]
 name = "hash-ast-desugaring"
 version = "0.1.0"
-source = "git+https://github.com/hash-org/hashc.git#49f2900a000062d3964c44a7b46d7999f24687eb"
+source = "git+https://github.com/hash-org/hashc.git?branch=main#8661310406502a13577974a2ea5d6fcbe0763121"
 dependencies = [
  "hash-ast",
  "hash-pipeline",
@@ -468,7 +504,7 @@ dependencies = [
 [[package]]
 name = "hash-ast-expand"
 version = "0.1.0"
-source = "git+https://github.com/hash-org/hashc.git#49f2900a000062d3964c44a7b46d7999f24687eb"
+source = "git+https://github.com/hash-org/hashc.git?branch=main#8661310406502a13577974a2ea5d6fcbe0763121"
 dependencies = [
  "hash-ast",
  "hash-pipeline",
@@ -481,7 +517,7 @@ dependencies = [
 [[package]]
 name = "hash-backend"
 version = "0.1.0"
-source = "git+https://github.com/hash-org/hashc.git#49f2900a000062d3964c44a7b46d7999f24687eb"
+source = "git+https://github.com/hash-org/hashc.git?branch=main#8661310406502a13577974a2ea5d6fcbe0763121"
 dependencies = [
  "hash-codegen",
  "hash-codegen-llvm",
@@ -497,9 +533,9 @@ dependencies = [
 [[package]]
 name = "hash-codegen"
 version = "0.1.0"
-source = "git+https://github.com/hash-org/hashc.git#49f2900a000062d3964c44a7b46d7999f24687eb"
+source = "git+https://github.com/hash-org/hashc.git?branch=main#8661310406502a13577974a2ea5d6fcbe0763121"
 dependencies = [
- "bitflags 2.3.2",
+ "bitflags 2.3.3",
  "fixedbitset",
  "hash-abi",
  "hash-ir",
@@ -515,7 +551,7 @@ dependencies = [
 [[package]]
 name = "hash-codegen-llvm"
 version = "0.1.0"
-source = "git+https://github.com/hash-org/hashc.git#49f2900a000062d3964c44a7b46d7999f24687eb"
+source = "git+https://github.com/hash-org/hashc.git?branch=main#8661310406502a13577974a2ea5d6fcbe0763121"
 dependencies = [
  "fxhash",
  "hash-codegen",
@@ -530,181 +566,9 @@ dependencies = [
 ]
 
 [[package]]
-name = "hash-error-codes"
+name = "hash-driver"
 version = "0.1.0"
-source = "git+https://github.com/hash-org/hashc.git#49f2900a000062d3964c44a7b46d7999f24687eb"
-
-[[package]]
-name = "hash-intrinsics"
-version = "0.1.0"
-source = "git+https://github.com/hash-org/hashc.git#49f2900a000062d3964c44a7b46d7999f24687eb"
-dependencies = [
- "derive_more",
- "hash-ast",
- "hash-source",
- "hash-target",
- "hash-tir",
- "hash-utils",
- "num-bigint",
- "num_enum",
-]
-
-[[package]]
-name = "hash-ir"
-version = "0.1.0"
-source = "git+https://github.com/hash-org/hashc.git#49f2900a000062d3964c44a7b46d7999f24687eb"
-dependencies = [
- "bitflags 2.3.2",
- "fixedbitset",
- "hash-alloc",
- "hash-ast",
- "hash-intrinsics",
- "hash-source",
- "hash-target",
- "hash-tir",
- "hash-utils",
- "html-escape",
-]
-
-[[package]]
-name = "hash-layout"
-version = "0.1.0"
-source = "git+https://github.com/hash-org/hashc.git#49f2900a000062d3964c44a7b46d7999f24687eb"
-dependencies = [
- "fixedbitset",
- "hash-ir",
- "hash-target",
- "hash-utils",
-]
-
-[[package]]
-name = "hash-lexer"
-version = "0.1.0"
-source = "git+https://github.com/hash-org/hashc.git#49f2900a000062d3964c44a7b46d7999f24687eb"
-dependencies = [
- "hash-reporting",
- "hash-source",
- "hash-target",
- "hash-token",
- "num-bigint",
- "num-traits",
-]
-
-[[package]]
-name = "hash-link"
-version = "0.1.0"
-source = "git+https://github.com/hash-org/hashc.git#49f2900a000062d3964c44a7b46d7999f24687eb"
-dependencies = [
- "cc",
- "hash-pipeline",
- "hash-reporting",
- "hash-source",
- "hash-target",
- "hash-utils",
- "libc",
-]
-
-[[package]]
-name = "hash-lower"
-version = "0.1.0"
-source = "git+https://github.com/hash-org/hashc.git#49f2900a000062d3964c44a7b46d7999f24687eb"
-dependencies = [
- "bitflags 2.3.2",
- "derive_more",
- "fixedbitset",
- "hash-ast",
- "hash-intrinsics",
- "hash-ir",
- "hash-layout",
- "hash-pipeline",
- "hash-reporting",
- "hash-semantics",
- "hash-source",
- "hash-target",
- "hash-tir",
- "hash-tree-def",
- "hash-utils",
- "indexmap 1.9.3",
- "num-traits",
- "rayon",
-]
-
-[[package]]
-name = "hash-parser"
-version = "0.1.0"
-source = "git+https://github.com/hash-org/hashc.git#49f2900a000062d3964c44a7b46d7999f24687eb"
-dependencies = [
- "crossbeam-channel",
- "derive_more",
- "hash-ast",
- "hash-lexer",
- "hash-pipeline",
- "hash-reporting",
- "hash-source",
- "hash-target",
- "hash-token",
- "hash-utils",
- "num-bigint",
- "profiling",
- "rayon",
-]
-
-[[package]]
-name = "hash-pipeline"
-version = "0.1.0"
-source = "git+https://github.com/hash-org/hashc.git#49f2900a000062d3964c44a7b46d7999f24687eb"
-dependencies = [
- "bitflags 2.3.2",
- "clap",
- "const_format",
- "hash-ast",
- "hash-reporting",
- "hash-source",
- "hash-target",
- "hash-utils",
- "num_cpus",
-]
-
-[[package]]
-name = "hash-reporting"
-version = "0.1.0"
-source = "git+https://github.com/hash-org/hashc.git#49f2900a000062d3964c44a7b46d7999f24687eb"
-dependencies = [
- "hash-error-codes",
- "hash-source",
- "hash-target",
- "hash-utils",
-]
-
-[[package]]
-name = "hash-semantics"
-version = "0.1.0"
-source = "git+https://github.com/hash-org/hashc.git#49f2900a000062d3964c44a7b46d7999f24687eb"
-dependencies = [
- "bimap",
- "bitflags 2.3.2",
- "dashmap",
- "derive_more",
- "hash-alloc",
- "hash-ast",
- "hash-error-codes",
- "hash-intrinsics",
- "hash-pipeline",
- "hash-reporting",
- "hash-source",
- "hash-target",
- "hash-tir",
- "hash-tree-def",
- "hash-typecheck",
- "hash-utils",
- "num-bigint",
- "once_cell",
-]
-
-[[package]]
-name = "hash-session"
-version = "0.1.0"
-source = "git+https://github.com/hash-org/hashc.git#49f2900a000062d3964c44a7b46d7999f24687eb"
+source = "git+https://github.com/hash-org/hashc.git?branch=main#8661310406502a13577974a2ea5d6fcbe0763121"
 dependencies = [
  "hash-alloc",
  "hash-ast",
@@ -730,9 +594,181 @@ dependencies = [
 ]
 
 [[package]]
+name = "hash-error-codes"
+version = "0.1.0"
+source = "git+https://github.com/hash-org/hashc.git?branch=main#8661310406502a13577974a2ea5d6fcbe0763121"
+
+[[package]]
+name = "hash-intrinsics"
+version = "0.1.0"
+source = "git+https://github.com/hash-org/hashc.git?branch=main#8661310406502a13577974a2ea5d6fcbe0763121"
+dependencies = [
+ "derive_more",
+ "hash-ast",
+ "hash-source",
+ "hash-target",
+ "hash-tir",
+ "hash-utils",
+ "num-bigint",
+ "num_enum",
+]
+
+[[package]]
+name = "hash-ir"
+version = "0.1.0"
+source = "git+https://github.com/hash-org/hashc.git?branch=main#8661310406502a13577974a2ea5d6fcbe0763121"
+dependencies = [
+ "bitflags 2.3.3",
+ "fixedbitset",
+ "hash-alloc",
+ "hash-ast",
+ "hash-intrinsics",
+ "hash-source",
+ "hash-target",
+ "hash-tir",
+ "hash-utils",
+ "html-escape",
+]
+
+[[package]]
+name = "hash-layout"
+version = "0.1.0"
+source = "git+https://github.com/hash-org/hashc.git?branch=main#8661310406502a13577974a2ea5d6fcbe0763121"
+dependencies = [
+ "fixedbitset",
+ "hash-ir",
+ "hash-target",
+ "hash-utils",
+]
+
+[[package]]
+name = "hash-lexer"
+version = "0.1.0"
+source = "git+https://github.com/hash-org/hashc.git?branch=main#8661310406502a13577974a2ea5d6fcbe0763121"
+dependencies = [
+ "hash-reporting",
+ "hash-source",
+ "hash-target",
+ "hash-token",
+ "num-bigint",
+ "num-traits",
+]
+
+[[package]]
+name = "hash-link"
+version = "0.1.0"
+source = "git+https://github.com/hash-org/hashc.git?branch=main#8661310406502a13577974a2ea5d6fcbe0763121"
+dependencies = [
+ "cc",
+ "hash-pipeline",
+ "hash-reporting",
+ "hash-source",
+ "hash-target",
+ "hash-utils",
+ "libc",
+]
+
+[[package]]
+name = "hash-lower"
+version = "0.1.0"
+source = "git+https://github.com/hash-org/hashc.git?branch=main#8661310406502a13577974a2ea5d6fcbe0763121"
+dependencies = [
+ "bitflags 2.3.3",
+ "derive_more",
+ "fixedbitset",
+ "hash-ast",
+ "hash-intrinsics",
+ "hash-ir",
+ "hash-layout",
+ "hash-pipeline",
+ "hash-reporting",
+ "hash-semantics",
+ "hash-source",
+ "hash-target",
+ "hash-tir",
+ "hash-tree-def",
+ "hash-utils",
+ "indexmap 1.9.3",
+ "num-traits",
+ "rayon",
+]
+
+[[package]]
+name = "hash-parser"
+version = "0.1.0"
+source = "git+https://github.com/hash-org/hashc.git?branch=main#8661310406502a13577974a2ea5d6fcbe0763121"
+dependencies = [
+ "crossbeam-channel",
+ "derive_more",
+ "hash-ast",
+ "hash-lexer",
+ "hash-pipeline",
+ "hash-reporting",
+ "hash-source",
+ "hash-target",
+ "hash-token",
+ "hash-utils",
+ "num-bigint",
+ "profiling",
+ "rayon",
+]
+
+[[package]]
+name = "hash-pipeline"
+version = "0.1.0"
+source = "git+https://github.com/hash-org/hashc.git?branch=main#8661310406502a13577974a2ea5d6fcbe0763121"
+dependencies = [
+ "bitflags 2.3.3",
+ "clap",
+ "const_format",
+ "hash-ast",
+ "hash-reporting",
+ "hash-source",
+ "hash-target",
+ "hash-utils",
+ "num_cpus",
+]
+
+[[package]]
+name = "hash-reporting"
+version = "0.1.0"
+source = "git+https://github.com/hash-org/hashc.git?branch=main#8661310406502a13577974a2ea5d6fcbe0763121"
+dependencies = [
+ "hash-error-codes",
+ "hash-source",
+ "hash-target",
+ "hash-utils",
+]
+
+[[package]]
+name = "hash-semantics"
+version = "0.1.0"
+source = "git+https://github.com/hash-org/hashc.git?branch=main#8661310406502a13577974a2ea5d6fcbe0763121"
+dependencies = [
+ "bimap",
+ "bitflags 2.3.3",
+ "dashmap",
+ "derive_more",
+ "hash-alloc",
+ "hash-ast",
+ "hash-error-codes",
+ "hash-intrinsics",
+ "hash-pipeline",
+ "hash-reporting",
+ "hash-source",
+ "hash-target",
+ "hash-tir",
+ "hash-tree-def",
+ "hash-typecheck",
+ "hash-utils",
+ "num-bigint",
+ "once_cell",
+]
+
+[[package]]
 name = "hash-source"
 version = "0.1.0"
-source = "git+https://github.com/hash-org/hashc.git#49f2900a000062d3964c44a7b46d7999f24687eb"
+source = "git+https://github.com/hash-org/hashc.git?branch=main#8661310406502a13577974a2ea5d6fcbe0763121"
 dependencies = [
  "bimap",
  "bytecount",
@@ -750,7 +786,7 @@ dependencies = [
 [[package]]
 name = "hash-target"
 version = "0.1.0"
-source = "git+https://github.com/hash-org/hashc.git#49f2900a000062d3964c44a7b46d7999f24687eb"
+source = "git+https://github.com/hash-org/hashc.git?branch=main#8661310406502a13577974a2ea5d6fcbe0763121"
 dependencies = [
  "num-bigint",
 ]
@@ -758,7 +794,7 @@ dependencies = [
 [[package]]
 name = "hash-tir"
 version = "0.1.0"
-source = "git+https://github.com/hash-org/hashc.git#49f2900a000062d3964c44a7b46d7999f24687eb"
+source = "git+https://github.com/hash-org/hashc.git?branch=main#8661310406502a13577974a2ea5d6fcbe0763121"
 dependencies = [
  "bimap",
  "derive_more",
@@ -778,7 +814,7 @@ dependencies = [
 [[package]]
 name = "hash-token"
 version = "0.1.0"
-source = "git+https://github.com/hash-org/hashc.git#49f2900a000062d3964c44a7b46d7999f24687eb"
+source = "git+https://github.com/hash-org/hashc.git?branch=main#8661310406502a13577974a2ea5d6fcbe0763121"
 dependencies = [
  "hash-alloc",
  "hash-source",
@@ -789,7 +825,7 @@ dependencies = [
 [[package]]
 name = "hash-tree-def"
 version = "0.1.0"
-source = "git+https://github.com/hash-org/hashc.git#49f2900a000062d3964c44a7b46d7999f24687eb"
+source = "git+https://github.com/hash-org/hashc.git?branch=main#8661310406502a13577974a2ea5d6fcbe0763121"
 dependencies = [
  "convert_case",
  "proc-macro2",
@@ -800,7 +836,7 @@ dependencies = [
 [[package]]
 name = "hash-typecheck"
 version = "0.1.0"
-source = "git+https://github.com/hash-org/hashc.git#49f2900a000062d3964c44a7b46d7999f24687eb"
+source = "git+https://github.com/hash-org/hashc.git?branch=main#8661310406502a13577974a2ea5d6fcbe0763121"
 dependencies = [
  "bimap",
  "dashmap",
@@ -822,9 +858,9 @@ dependencies = [
 [[package]]
 name = "hash-untyped-semantics"
 version = "0.1.0"
-source = "git+https://github.com/hash-org/hashc.git#49f2900a000062d3964c44a7b46d7999f24687eb"
+source = "git+https://github.com/hash-org/hashc.git?branch=main#8661310406502a13577974a2ea5d6fcbe0763121"
 dependencies = [
- "bitflags 2.3.2",
+ "bitflags 2.3.3",
  "crossbeam-channel",
  "hash-ast",
  "hash-error-codes",
@@ -839,10 +875,11 @@ dependencies = [
 [[package]]
 name = "hash-utils"
 version = "0.1.0"
-source = "git+https://github.com/hash-org/hashc.git#49f2900a000062d3964c44a7b46d7999f24687eb"
+source = "git+https://github.com/hash-org/hashc.git?branch=main#8661310406502a13577974a2ea5d6fcbe0763121"
 dependencies = [
  "append-only-vec",
  "arrayvec",
+ "backtrace",
  "dashmap",
  "fixedbitset",
  "fxhash",
@@ -877,9 +914,9 @@ version = "0.1.0"
 dependencies = [
  "cargo-husky",
  "hash-ast",
+ "hash-driver",
  "hash-pipeline",
  "hash-reporting",
- "hash-session",
  "hash-source",
  "hash-utils",
  "rayon",
@@ -1080,6 +1117,15 @@ dependencies = [
 ]
 
 [[package]]
+name = "miniz_oxide"
+version = "0.6.2"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "b275950c28b37e794e8c55d88aeb5e139d0ce23fdbbeda68f8d7174abdf9e8fa"
+dependencies = [
+ "adler",
+]
+
+[[package]]
 name = "nibble_vec"
 version = "0.1.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -1160,6 +1206,15 @@ dependencies = [
  "proc-macro2",
  "quote",
  "syn 1.0.109",
+]
+
+[[package]]
+name = "object"
+version = "0.30.4"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "03b4680b86d9cfafba8fc491dc9b6df26b68cf40e9e6cd73909194759a63c385"
+dependencies = [
+ "memchr",
 ]
 
 [[package]]
@@ -1330,6 +1385,12 @@ name = "replace_with"
 version = "0.1.7"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "e3a8614ee435691de62bcffcf4a66d91b3594bf1428a5722e79103249a095690"
+
+[[package]]
+name = "rustc-demangle"
+version = "0.1.23"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "d626bb9dae77e28219937af045c257c28bfd3f69333c512553507f5f9798cb76"
 
 [[package]]
 name = "rustc_version"

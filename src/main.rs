@@ -3,21 +3,21 @@
 mod command;
 mod error;
 
-use std::{env, process::exit};
+use std::{env, panic, process::exit};
 
 use command::InteractiveCommand;
 use error::InteractiveError;
-use hash_ast::node_map::InteractiveBlock;
+use hash_driver::{driver::Driver, Compiler, CompilerBuilder};
 use hash_pipeline::{
-    interface::{CompilerInterface, CompilerOutputStream},
+    interface::CompilerInterface,
     settings::{CompilerSettings, CompilerStageKind},
-    workspace::Workspace,
-    Compiler,
 };
-use hash_reporting::{report::Report, writer::ReportWriter};
-use hash_session::{emit_fatal_error, make_stages, CompilerSession};
-use hash_source::SourceMap;
+use hash_reporting::writer::ReportWriter;
+use hash_utils::{crash::crash_handler, log, logging::CompilerLogger};
 use rustyline::{error::ReadlineError, Editor};
+
+/// The logger that is used by the compiler for `log!` statements.
+pub static COMPILER_LOGGER: CompilerLogger = CompilerLogger;
 
 /// Interactive backend version
 pub const VERSION: &str = env!("EXECUTABLE_VERSION");
@@ -29,50 +29,26 @@ pub fn print_version() {
 }
 
 /// Function that is called on a graceful interpreter exit
-pub fn goodbye() {
+pub fn goodbye() -> ! {
     println!("Goodbye!");
     exit(0)
 }
 
-/// Perform some task that might fail and if it does, report the error and exit,
-/// otherwise return the result of the task.
-fn handle_error<T, E: Into<Report>>(sources: &SourceMap, f: impl FnOnce() -> Result<T, E>) -> T {
-    match f() {
-        Ok(value) => value,
-        Err(err) => emit_fatal_error(err, sources),
-    }
-}
-
 fn main() {
-    // @@Hack: we have to create a dummy source map here so that we can use it
-    // to report errors in the case that the compiler fails to start up. After the
-    // workspace is initiated, it is replaced with the real source map.
-    let source_map = SourceMap::new();
-    let settings = CompilerSettings::new();
+    panic::set_hook(Box::new(crash_handler));
+    log::set_logger(&COMPILER_LOGGER).unwrap_or_else(|_| panic!("couldn't initiate logger"));
 
-    // We want to figure out the entry point of the compiler by checking if the
-    // compiler has been specified to run in a specific mode.
-    let _entry_point = handle_error(&source_map, || settings.entry_point().transpose());
-    let workspace = handle_error(&source_map, || Workspace::new(&settings));
+    // @@Future: Maybe support a restricted subset of command line arguments from
+    // the settings?
+    let mut settings = CompilerSettings::new();
 
-    // We need at least 2 workers for the parsing loop in order so that the job
-    // queue can run within a worker and any other jobs can run inside another
-    // worker or workers.
-    let pool = rayon::ThreadPoolBuilder::new()
-        .num_threads(settings.worker_count + 1)
-        .thread_name(|id| format!("compiler-worker-{id}"))
-        .build()
-        .unwrap();
+    // Configure the settings to only run up to the typechecking stage, and
+    // consequently to evaluate the TIR, as this is what the interpreter
+    // currently supports.
+    settings.set_stage(CompilerStageKind::Analysis);
+    settings.semantic_settings.eval_tir = true;
 
-    let session = CompilerSession::new(
-        workspace,
-        pool,
-        settings,
-        || CompilerOutputStream::Stderr(std::io::stderr()),
-        || CompilerOutputStream::Stdout(std::io::stdout()),
-    );
-    let mut compiler = Compiler::new(make_stages());
-    let mut compiler_state = compiler.bootstrap(session);
+    let mut compiler = CompilerBuilder::build_with_settings(settings);
 
     print_version(); // Display the version on start-up
     let mut rl = Editor::<()>::new();
@@ -83,7 +59,7 @@ fn main() {
         match line {
             Ok(line) => {
                 rl.add_history_entry(line.as_str());
-                compiler_state = execute(line.as_str(), &mut compiler, compiler_state);
+                execute(&mut compiler, line.as_str());
             }
             Err(ReadlineError::Interrupted) | Err(ReadlineError::Eof) => {
                 println!("Exiting!");
@@ -94,7 +70,7 @@ fn main() {
                     "{}",
                     ReportWriter::new(
                         vec![InteractiveError::Internal(format!("{err}")).into()],
-                        compiler_state.source_map()
+                        compiler.source_map()
                     )
                 );
             }
@@ -103,11 +79,14 @@ fn main() {
 }
 
 /// Function to process a single line of input from the REPL instance.
-fn execute<I: CompilerInterface>(input: &str, compiler: &mut Compiler<I>, mut ctx: I) -> I {
+fn execute(compiler: &mut Driver<Compiler>, input: &str) {
     // If the entered line has no content, just skip even evaluating it.
     if input.is_empty() {
-        return ctx;
+        return;
     }
+
+    // Clear the diagnostics from the previous run.
+    compiler.diagnostics_mut().clear();
 
     let command = InteractiveCommand::try_from(input);
 
@@ -128,10 +107,7 @@ fn execute<I: CompilerInterface>(input: &str, compiler: &mut Compiler<I>, mut ct
             | InteractiveCommand::Display(expr)
             | InteractiveCommand::Code(expr)),
         ) => {
-            // Add the interactive block to the state
-            let interactive_id =
-                ctx.add_interactive_block(expr.to_string(), InteractiveBlock::new());
-            let settings = ctx.settings_mut();
+            let settings = compiler.settings_mut();
 
             // if the mode is specified to emit the type `:t` of the expr or the dump tree
             // `:d`
@@ -151,16 +127,11 @@ fn execute<I: CompilerInterface>(input: &str, compiler: &mut Compiler<I>, mut ct
                 }
             }
 
-            // We don't want the old diagnostics
-            // @@Refactor: we don't want to leak the diagnostics here..
-            ctx.diagnostics_mut().clear();
-            let new_state = compiler.run(interactive_id, ctx);
-            return new_state;
+            // Add the interactive block to the state
+            compiler.run_interactive(expr.to_string());
         }
         Err(err) => {
-            println!("{}", ReportWriter::new(vec![err.into()], ctx.source_map()))
+            println!("{}", ReportWriter::new(vec![err.into()], compiler.source_map()))
         }
     }
-
-    ctx
 }
