@@ -419,7 +419,7 @@ checksum = "6fb8d784f27acf97159b40fc4db5ecd8aa23b9ad5ef69cdd136d3bc80665f0c0"
 [[package]]
 name = "hash-abi"
 version = "0.1.0"
-source = "git+https://github.com/hash-org/hashc.git?branch=main#431946260dc71b1c49e61934dcbdc823a92cd897"
+source = "git+https://github.com/hash-org/hashc.git?branch=main#f64c50ada074a1775dd0922d1a98c47765ce2bcb"
 dependencies = [
  "hash-ir",
  "hash-layout",
@@ -432,7 +432,7 @@ dependencies = [
 [[package]]
 name = "hash-ast"
 version = "0.1.0"
-source = "git+https://github.com/hash-org/hashc.git?branch=main#431946260dc71b1c49e61934dcbdc823a92cd897"
+source = "git+https://github.com/hash-org/hashc.git?branch=main#f64c50ada074a1775dd0922d1a98c47765ce2bcb"
 dependencies = [
  "hash-reporting",
  "hash-source",
@@ -447,7 +447,7 @@ dependencies = [
 [[package]]
 name = "hash-ast-desugaring"
 version = "0.1.0"
-source = "git+https://github.com/hash-org/hashc.git?branch=main#431946260dc71b1c49e61934dcbdc823a92cd897"
+source = "git+https://github.com/hash-org/hashc.git?branch=main#f64c50ada074a1775dd0922d1a98c47765ce2bcb"
 dependencies = [
  "hash-ast",
  "hash-pipeline",
@@ -460,7 +460,7 @@ dependencies = [
 [[package]]
 name = "hash-ast-expand"
 version = "0.1.0"
-source = "git+https://github.com/hash-org/hashc.git?branch=main#431946260dc71b1c49e61934dcbdc823a92cd897"
+source = "git+https://github.com/hash-org/hashc.git?branch=main#f64c50ada074a1775dd0922d1a98c47765ce2bcb"
 dependencies = [
  "hash-ast",
  "hash-ast-utils",
@@ -478,7 +478,7 @@ dependencies = [
 [[package]]
 name = "hash-ast-utils"
 version = "0.1.0"
-source = "git+https://github.com/hash-org/hashc.git?branch=main#431946260dc71b1c49e61934dcbdc823a92cd897"
+source = "git+https://github.com/hash-org/hashc.git?branch=main#f64c50ada074a1775dd0922d1a98c47765ce2bcb"
 dependencies = [
  "hash-ast",
  "hash-source",
@@ -489,7 +489,7 @@ dependencies = [
 [[package]]
 name = "hash-attrs"
 version = "0.1.0"
-source = "git+https://github.com/hash-org/hashc.git?branch=main#431946260dc71b1c49e61934dcbdc823a92cd897"
+source = "git+https://github.com/hash-org/hashc.git?branch=main#f64c50ada074a1775dd0922d1a98c47765ce2bcb"
 dependencies = [
  "hash-ast",
  "hash-ast-utils",
@@ -506,7 +506,7 @@ dependencies = [
 [[package]]
 name = "hash-backend"
 version = "0.1.0"
-source = "git+https://github.com/hash-org/hashc.git?branch=main#431946260dc71b1c49e61934dcbdc823a92cd897"
+source = "git+https://github.com/hash-org/hashc.git?branch=main#f64c50ada074a1775dd0922d1a98c47765ce2bcb"
 dependencies = [
  "hash-codegen",
  "hash-codegen-llvm",
@@ -521,7 +521,7 @@ dependencies = [
 [[package]]
 name = "hash-codegen"
 version = "0.1.0"
-source = "git+https://github.com/hash-org/hashc.git?branch=main#431946260dc71b1c49e61934dcbdc823a92cd897"
+source = "git+https://github.com/hash-org/hashc.git?branch=main#f64c50ada074a1775dd0922d1a98c47765ce2bcb"
 dependencies = [
  "fixedbitset",
  "hash-abi",
@@ -539,7 +539,7 @@ dependencies = [
 [[package]]
 name = "hash-codegen-llvm"
 version = "0.1.0"
-source = "git+https://github.com/hash-org/hashc.git?branch=main#431946260dc71b1c49e61934dcbdc823a92cd897"
+source = "git+https://github.com/hash-org/hashc.git?branch=main#f64c50ada074a1775dd0922d1a98c47765ce2bcb"
 dependencies = [
  "hash-attrs",
  "hash-codegen",
@@ -556,7 +556,7 @@ dependencies = [
 [[package]]
 name = "hash-driver"
 version = "0.1.0"
-source = "git+https://github.com/hash-org/hashc.git?branch=main#431946260dc71b1c49e61934dcbdc823a92cd897"
+source = "git+https://github.com/hash-org/hashc.git?branch=main#f64c50ada074a1775dd0922d1a98c47765ce2bcb"
 dependencies = [
  "hash-ast",
  "hash-ast-desugaring",
@@ -582,12 +582,12 @@ dependencies = [
 [[package]]
 name = "hash-error-codes"
 version = "0.1.0"
-source = "git+https://github.com/hash-org/hashc.git?branch=main#431946260dc71b1c49e61934dcbdc823a92cd897"
+source = "git+https://github.com/hash-org/hashc.git?branch=main#f64c50ada074a1775dd0922d1a98c47765ce2bcb"
 
 [[package]]
 name = "hash-exhaustiveness"
 version = "0.1.0"
-source = "git+https://github.com/hash-org/hashc.git?branch=main#431946260dc71b1c49e61934dcbdc823a92cd897"
+source = "git+https://github.com/hash-org/hashc.git?branch=main#f64c50ada074a1775dd0922d1a98c47765ce2bcb"
 dependencies = [
  "hash-ast",
  "hash-reporting",
@@ -601,7 +601,7 @@ dependencies = [
 [[package]]
 name = "hash-ir"
 version = "0.1.0"
-source = "git+https://github.com/hash-org/hashc.git?branch=main#431946260dc71b1c49e61934dcbdc823a92cd897"
+source = "git+https://github.com/hash-org/hashc.git?branch=main#f64c50ada074a1775dd0922d1a98c47765ce2bcb"
 dependencies = [
  "fixedbitset",
  "hash-ast",
@@ -616,7 +616,7 @@ dependencies = [
 [[package]]
 name = "hash-ir-utils"
 version = "0.1.0"
-source = "git+https://github.com/hash-org/hashc.git?branch=main#431946260dc71b1c49e61934dcbdc823a92cd897"
+source = "git+https://github.com/hash-org/hashc.git?branch=main#f64c50ada074a1775dd0922d1a98c47765ce2bcb"
 dependencies = [
  "hash-ast",
  "hash-ir",
@@ -631,7 +631,7 @@ dependencies = [
 [[package]]
 name = "hash-layout"
 version = "0.1.0"
-source = "git+https://github.com/hash-org/hashc.git?branch=main#431946260dc71b1c49e61934dcbdc823a92cd897"
+source = "git+https://github.com/hash-org/hashc.git?branch=main#f64c50ada074a1775dd0922d1a98c47765ce2bcb"
 dependencies = [
  "fixedbitset",
  "hash-ir",
@@ -643,7 +643,7 @@ dependencies = [
 [[package]]
 name = "hash-lexer"
 version = "0.1.0"
-source = "git+https://github.com/hash-org/hashc.git?branch=main#431946260dc71b1c49e61934dcbdc823a92cd897"
+source = "git+https://github.com/hash-org/hashc.git?branch=main#f64c50ada074a1775dd0922d1a98c47765ce2bcb"
 dependencies = [
  "hash-reporting",
  "hash-source",
@@ -657,7 +657,7 @@ dependencies = [
 [[package]]
 name = "hash-link"
 version = "0.1.0"
-source = "git+https://github.com/hash-org/hashc.git?branch=main#431946260dc71b1c49e61934dcbdc823a92cd897"
+source = "git+https://github.com/hash-org/hashc.git?branch=main#f64c50ada074a1775dd0922d1a98c47765ce2bcb"
 dependencies = [
  "cc",
  "hash-pipeline",
@@ -671,7 +671,7 @@ dependencies = [
 [[package]]
 name = "hash-lower"
 version = "0.1.0"
-source = "git+https://github.com/hash-org/hashc.git?branch=main#431946260dc71b1c49e61934dcbdc823a92cd897"
+source = "git+https://github.com/hash-org/hashc.git?branch=main#f64c50ada074a1775dd0922d1a98c47765ce2bcb"
 dependencies = [
  "fixedbitset",
  "hash-ast",
@@ -694,7 +694,7 @@ dependencies = [
 [[package]]
 name = "hash-parser"
 version = "0.1.0"
-source = "git+https://github.com/hash-org/hashc.git?branch=main#431946260dc71b1c49e61934dcbdc823a92cd897"
+source = "git+https://github.com/hash-org/hashc.git?branch=main#f64c50ada074a1775dd0922d1a98c47765ce2bcb"
 dependencies = [
  "hash-ast",
  "hash-lexer",
@@ -711,7 +711,7 @@ dependencies = [
 [[package]]
 name = "hash-pipeline"
 version = "0.1.0"
-source = "git+https://github.com/hash-org/hashc.git?branch=main#431946260dc71b1c49e61934dcbdc823a92cd897"
+source = "git+https://github.com/hash-org/hashc.git?branch=main#f64c50ada074a1775dd0922d1a98c47765ce2bcb"
 dependencies = [
  "clap",
  "const_format",
@@ -727,7 +727,7 @@ dependencies = [
 [[package]]
 name = "hash-reporting"
 version = "0.1.0"
-source = "git+https://github.com/hash-org/hashc.git?branch=main#431946260dc71b1c49e61934dcbdc823a92cd897"
+source = "git+https://github.com/hash-org/hashc.git?branch=main#f64c50ada074a1775dd0922d1a98c47765ce2bcb"
 dependencies = [
  "hash-error-codes",
  "hash-source",
@@ -738,7 +738,7 @@ dependencies = [
 [[package]]
 name = "hash-semantics"
 version = "0.1.0"
-source = "git+https://github.com/hash-org/hashc.git?branch=main#431946260dc71b1c49e61934dcbdc823a92cd897"
+source = "git+https://github.com/hash-org/hashc.git?branch=main#f64c50ada074a1775dd0922d1a98c47765ce2bcb"
 dependencies = [
  "hash-ast",
  "hash-attrs",
@@ -759,7 +759,7 @@ dependencies = [
 [[package]]
 name = "hash-source"
 version = "0.1.0"
-source = "git+https://github.com/hash-org/hashc.git?branch=main#431946260dc71b1c49e61934dcbdc823a92cd897"
+source = "git+https://github.com/hash-org/hashc.git?branch=main#f64c50ada074a1775dd0922d1a98c47765ce2bcb"
 dependencies = [
  "bimap",
  "bytecount",
@@ -773,7 +773,7 @@ dependencies = [
 [[package]]
 name = "hash-storage"
 version = "0.1.0"
-source = "git+https://github.com/hash-org/hashc.git?branch=main#431946260dc71b1c49e61934dcbdc823a92cd897"
+source = "git+https://github.com/hash-org/hashc.git?branch=main#f64c50ada074a1775dd0922d1a98c47765ce2bcb"
 dependencies = [
  "bumpalo",
  "bumpalo-herd",
@@ -786,7 +786,7 @@ dependencies = [
 [[package]]
 name = "hash-target"
 version = "0.1.0"
-source = "git+https://github.com/hash-org/hashc.git?branch=main#431946260dc71b1c49e61934dcbdc823a92cd897"
+source = "git+https://github.com/hash-org/hashc.git?branch=main#f64c50ada074a1775dd0922d1a98c47765ce2bcb"
 dependencies = [
  "num-bigint",
 ]
@@ -794,7 +794,7 @@ dependencies = [
 [[package]]
 name = "hash-tir"
 version = "0.1.0"
-source = "git+https://github.com/hash-org/hashc.git?branch=main#431946260dc71b1c49e61934dcbdc823a92cd897"
+source = "git+https://github.com/hash-org/hashc.git?branch=main#f64c50ada074a1775dd0922d1a98c47765ce2bcb"
 dependencies = [
  "hash-ast",
  "hash-reporting",
@@ -813,7 +813,7 @@ dependencies = [
 [[package]]
 name = "hash-token"
 version = "0.1.0"
-source = "git+https://github.com/hash-org/hashc.git?branch=main#431946260dc71b1c49e61934dcbdc823a92cd897"
+source = "git+https://github.com/hash-org/hashc.git?branch=main#f64c50ada074a1775dd0922d1a98c47765ce2bcb"
 dependencies = [
  "hash-source",
  "hash-utils",
@@ -826,7 +826,7 @@ dependencies = [
 [[package]]
 name = "hash-tree-def"
 version = "0.1.0"
-source = "git+https://github.com/hash-org/hashc.git?branch=main#431946260dc71b1c49e61934dcbdc823a92cd897"
+source = "git+https://github.com/hash-org/hashc.git?branch=main#f64c50ada074a1775dd0922d1a98c47765ce2bcb"
 dependencies = [
  "convert_case",
  "proc-macro2",
@@ -837,7 +837,7 @@ dependencies = [
 [[package]]
 name = "hash-typecheck"
 version = "0.1.0"
-source = "git+https://github.com/hash-org/hashc.git?branch=main#431946260dc71b1c49e61934dcbdc823a92cd897"
+source = "git+https://github.com/hash-org/hashc.git?branch=main#f64c50ada074a1775dd0922d1a98c47765ce2bcb"
 dependencies = [
  "hash-ast",
  "hash-attrs",
@@ -858,7 +858,7 @@ dependencies = [
 [[package]]
 name = "hash-untyped-semantics"
 version = "0.1.0"
-source = "git+https://github.com/hash-org/hashc.git?branch=main#431946260dc71b1c49e61934dcbdc823a92cd897"
+source = "git+https://github.com/hash-org/hashc.git?branch=main#f64c50ada074a1775dd0922d1a98c47765ce2bcb"
 dependencies = [
  "hash-ast",
  "hash-pipeline",
@@ -871,7 +871,7 @@ dependencies = [
 [[package]]
 name = "hash-utils"
 version = "0.1.0"
-source = "git+https://github.com/hash-org/hashc.git?branch=main#431946260dc71b1c49e61934dcbdc823a92cd897"
+source = "git+https://github.com/hash-org/hashc.git?branch=main#f64c50ada074a1775dd0922d1a98c47765ce2bcb"
 dependencies = [
  "arrayvec",
  "backtrace",
@@ -1477,9 +1477,9 @@ checksum = "94143f37725109f92c262ed2cf5e59bce7498c01bcc1502d7b9afe439a4e9f49"
 
 [[package]]
 name = "semver"
-version = "1.0.18"
+version = "1.0.19"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "b0293b4b29daaf487284529cc2f5675b8e57c61f70167ba415a463651fd6a918"
+checksum = "ad977052201c6de01a8ef2aa3378c4bd23217a056337d1d6da40468d267a4fb0"
 
 [[package]]
 name = "siphasher"
