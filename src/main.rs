@@ -12,7 +12,7 @@ use hash_pipeline::{
     interface::CompilerInterface,
     settings::{CompilerSettings, CompilerStageKind},
 };
-use hash_reporting::writer::ReportWriter;
+use hash_reporting::report::Report;
 use hash_utils::{crash::crash_handler, log, logging::CompilerLogger};
 use rustyline::{error::ReadlineError, Editor};
 
@@ -66,13 +66,7 @@ fn main() {
                 break;
             }
             Err(err) => {
-                eprintln!(
-                    "{}",
-                    ReportWriter::new(
-                        vec![InteractiveError::Internal(format!("{err}")).into()],
-                        compiler.source_map()
-                    )
-                );
+                eprintln!("{}", Report::from(InteractiveError::Internal(format!("{err}"))));
             }
         }
     }
@@ -131,7 +125,7 @@ fn execute(compiler: &mut Driver<Compiler>, input: &str) {
             compiler.run_interactive(expr.to_string());
         }
         Err(err) => {
-            println!("{}", ReportWriter::new(vec![err.into()], compiler.source_map()))
+            println!("{}", Report::from(err))
         }
     }
 }
